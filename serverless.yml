@@ -1,0 +1,68 @@
+service: horuschallengeapi
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  lambdaHashingVersion: 20201221
+  region: sa-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - 'rds:*'
+        - 'application-autoscaling:DeleteScalingPolicy'
+        - 'application-autoscaling:DeregisterScalableTarget'
+        - 'application-autoscaling:DescribeScalableTargets'
+        - 'application-autoscaling:DescribeScalingActivities'
+        - 'application-autoscaling:DescribeScalingPolicies'
+        - 'application-autoscaling:PutScalingPolicy'
+        - 'application-autoscaling:RegisterScalableTarget'
+        - 'cloudwatch:DescribeAlarms'
+        - 'cloudwatch:GetMetricStatistics'
+        - 'cloudwatch:PutMetricAlarm'
+        - 'cloudwatch:DeleteAlarms'
+        - 'ec2:DescribeAccountAttributes'
+        - 'ec2:DescribeAvailabilityZones'
+        - 'ec2:DescribeInternetGateways'
+        - 'ec2:DescribeSecurityGroups'
+        - 'ec2:DescribeSubnets'
+        - 'ec2:DescribeVpcAttribute'
+        - 'ec2:DescribeVpcs'
+        - 'sns:ListSubscriptions'
+        - 'sns:ListTopics'
+        - 'sns:Publish'
+        - 'logs:DescribeLogStreams'
+        - 'logs:GetLogEvents'
+      Resource:
+        - '*'
+
+functions:
+  getUsers:
+    handler: search.getUsers
+    events:
+      - http:
+          path: users/search
+          method: get
+          cors: true
+    vpc:
+      securityGroupIds:
+        - sg-ef82779b
+      subnetIds:
+        - subnet-7f187b36
+        - subnet-5f0e6339
+        - subnet-b08be3eb
+  createUsers:
+    handler: create.createUsers
+    events:
+      - http:
+          path: users/create
+          method: post
+    vpc:
+      securityGroupIds:
+        - sg-ef82779b
+      subnetIds:
+        - subnet-7f187b36
+        - subnet-5f0e6339
+        - subnet-b08be3eb
