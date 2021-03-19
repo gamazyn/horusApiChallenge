@@ -66,3 +66,17 @@ functions:
         - subnet-7f187b36
         - subnet-5f0e6339
         - subnet-b08be3eb
+  getUsersAuth:
+    handler: authSearch.getUsersAuth
+    events:
+      - http:
+          path: users/auth-search
+          method: get
+          cors: true
+    vpc:
+      securityGroupIds:
+        - sg-ef82779b
+      subnetIds:
+        - subnet-7f187b36
+        - subnet-5f0e6339
+        - subnet-b08be3eb
