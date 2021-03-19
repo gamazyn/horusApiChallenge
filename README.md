@@ -1,6 +1,8 @@
 # Horus Challenge API 🌟
 
-Horus Challenge API foi criada para a o desafio proposto pela empresa, afim de testar os conhecimentos dos candidatos sobre Amazon AWS, Amazon RDS, Amazon Lambda e Amazon API Gateway.
+Horus Challenge API foi criada para a o desafio proposto pela empresa, afim de testar os conhecimentos dos candidatos sobre Amazon AWS, Amazon RDS, Amazon CloudFormation, Amazon Lambda e Amazon API Gateway.
+
+Foi utilizado Node.JS, Serverless e MySQL.
 
 ## Instalação
 
