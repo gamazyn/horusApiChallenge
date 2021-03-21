@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.getUsers = async (event) => {
+module.exports.getUsersAuth = async (event) => {
   const mysql = require('mysql');
   const connection = mysql.createConnection({
     host: 'users.c5gwvbv4us8w.sa-east-1.rds.amazonaws.com',
